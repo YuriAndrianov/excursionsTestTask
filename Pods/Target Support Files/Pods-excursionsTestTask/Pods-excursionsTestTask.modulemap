@@ -1,0 +1,6 @@
+framework module Pods_excursionsTestTask {
+  umbrella header "Pods-excursionsTestTask-umbrella.h"
+
+  export *
+  module * { export * }
+}

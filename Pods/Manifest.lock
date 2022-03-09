@@ -1,0 +1,20 @@
+PODS:
+  - IQKeyboardManagerSwift (6.5.9)
+  - TGPControls (5.1.0)
+
+DEPENDENCIES:
+  - IQKeyboardManagerSwift
+  - TGPControls
+
+SPEC REPOS:
+  trunk:
+    - IQKeyboardManagerSwift
+    - TGPControls
+
+SPEC CHECKSUMS:
+  IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
+  TGPControls: 52c0770bee9c9aee364f1559cc627fc01ea5e8b2
+
+PODFILE CHECKSUM: 9ce92c229987938a04529a69305fdae30ebb6ebc
+
+COCOAPODS: 1.11.2
