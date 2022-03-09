@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class MainViewPresenter {
+    
     weak var view: UIViewController?
 
     init(view: UIViewController) {
@@ -22,7 +23,6 @@ class MainViewPresenter {
         firstRatingVC.presenter = presenter
         view?.present(firstRatingVC, animated: true, completion: nil)
     }
-    
     
 }
 

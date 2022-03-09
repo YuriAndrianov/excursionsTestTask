@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 class FirstRatingViewPresenter {
     weak var view: FirstRatingView?

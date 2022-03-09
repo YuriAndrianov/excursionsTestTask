@@ -43,6 +43,7 @@ final class SecondRatingViewController: SecondRatingView {
     }()
     
     private var activeView: UIView?
+    private let placeholderText = "Напишите здесь, чем Вам запомнился тур, посоветуете ли его друзьям, и удалось ли повеселиться"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,8 +69,8 @@ final class SecondRatingViewController: SecondRatingView {
     private func setupStackView() {
         view.addSubview(stackView)
   
-        impressionDetailView = StyleSheet.shared.createCustomDetailedRatingView(with: "Что особенно понравилось в этом туре?")
-        improvementSuggestionView = StyleSheet.shared.createCustomDetailedRatingView(with: "Как мы могли бы улучшить подачу информации?")
+        impressionDetailView = StyleSheet.shared.createCustomDetailedRatingView(withTitle: "Что особенно понравилось в этом туре?")
+        improvementSuggestionView = StyleSheet.shared.createCustomDetailedRatingView(withTitle: "Как мы могли бы улучшить подачу информации?")
         
         impressionDetailView.textView.delegate = self
         improvementSuggestionView.textView.delegate = self
@@ -123,8 +124,11 @@ final class SecondRatingViewController: SecondRatingView {
     }
     
     @objc private func saveReviewButtonTapped() {
-        let impressionText = impressionDetailView.textView.text ?? ""
-        let improvementText = improvementSuggestionView.textView.text ?? ""
+        var impressionText = impressionDetailView.textView.text ?? ""
+        var improvementText = improvementSuggestionView.textView.text ?? ""
+        
+        if impressionText == placeholderText { impressionText = "" }
+        if improvementText == placeholderText { improvementText = "" }
         
         presenter?.addDetailedInformationToReview(text1: impressionText, text2: improvementText)
     }
@@ -153,7 +157,7 @@ extension SecondRatingViewController {
             stackView.widthAnchor.constraint(equalToConstant: view.frame.width - 20),
             stackView.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 10),
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackView.bottomAnchor.constraint(equalTo: saveReviewButton.topAnchor, constant: -10),
+            stackView.heightAnchor.constraint(equalToConstant: view.frame.height * 0.5),
             
             saveReviewButton.widthAnchor.constraint(equalToConstant: view.frame.width - 20),
             saveReviewButton.heightAnchor.constraint(equalToConstant: 40),
@@ -175,7 +179,6 @@ extension SecondRatingViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         activeView = nil
         if textView.text.isEmpty {
-            let placeholderText = "Напишите здесь, чем Вам запомнился тур, посоветуете ли его друзьям, и удалось ли повеселиться"
             textView.text = placeholderText
             textView.textColor = UIColor.lightGray
         }

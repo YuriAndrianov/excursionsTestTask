@@ -26,7 +26,7 @@ class StyleSheet {
         return view
     }
     
-    func createCustomDetailedRatingView(with description: String) -> CustomDetailedRatingView {
+    func createCustomDetailedRatingView(withTitle description: String) -> CustomDetailedRatingView {
         let view = CustomDetailedRatingView()
         view.label.text = description
         return view
