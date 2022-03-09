@@ -10,11 +10,13 @@ import UIKit
 
 class SecondRatingViewPresenter {
     weak var view: SecondRatingView?
-    var service: ServiceProtocol?
+    var service: NetworkServiceProtocol?
+    var review: Review?
 
-    init(view: SecondRatingView, service: ServiceProtocol) {
+    init(view: SecondRatingView, service: NetworkServiceProtocol, review: Review) {
         self.view = view
         self.service = service
+        self.review = review
     }
 
     func getImage() {
@@ -28,16 +30,12 @@ class SecondRatingViewPresenter {
         })
     }
     
-    func createReviewWith(generalRating: Int, guideRating: Int, presentationRating: Int, stepsNavigationRating: Int) {
-//        let id = "\(Int.random(in: 1...100))"
-//        let review = Review(id: id,
-//                            generalRating: generalRating,
-//                            guideRating: guideRating,
-//                            presentationRating: presentationRating,
-//                            stepsNavigationRating: stepsNavigationRating,
-//                            impressionDetail: "",
-//                            improvementSuggestion: "")
-//        saveReview(review)
+    func addDetailedInformationToReview(text1: String, text2: String) {
+        guard var review = review else { return }
+        review.impressionDetail = text1
+        review.improvementSuggestion = text2
+        
+        postReview(review)
     }
     
     func dismissButtonTapped() {

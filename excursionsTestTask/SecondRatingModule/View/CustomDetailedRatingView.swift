@@ -47,8 +47,6 @@ final class CustomDetailedRatingView: UIView {
         return textView
     }()
     
-    var detailedRatingText: String?
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
@@ -86,9 +84,5 @@ final class CustomDetailedRatingView: UIView {
             textView.heightAnchor.constraint(equalToConstant: 70)
         ])
     }
-    
-    @objc private func textViewTextChanged(_ sender: UITextView) {
-        self.detailedRatingText = sender.text
-    }
-    
+
 }

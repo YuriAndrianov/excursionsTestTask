@@ -10,9 +10,9 @@ import UIKit
 
 class FirstRatingViewPresenter {
     weak var view: FirstRatingView?
-    var service: ServiceProtocol?
+    var service: NetworkServiceProtocol?
 
-    init(view: FirstRatingView, service: ServiceProtocol) {
+    init(view: FirstRatingView, service: NetworkServiceProtocol) {
         self.view = view
         self.service = service
     }
@@ -36,23 +36,18 @@ class FirstRatingViewPresenter {
                             presentationRating: presentationRating,
                             stepsNavigationRating: stepsNavigationRating,
                             impressionDetail: "",
-                            improvementSuggestion: "")
-        saveReview(review)
-        showSecondRatingVC()
+                                  improvementSuggestion: "")
+        showSecondRatingVC(with: review)
     }
     
     func dismissButtonTapped() {
         view?.dismiss(animated: true, completion: nil)
     }
-    
-    func saveReview(_ review: Review) {
-        service?.saveReview(review)
-    }
-    
-    func showSecondRatingVC() {
+ 
+    func showSecondRatingVC(with review: Review) {
         let secondRatingVC = SecondRatingViewController()
         let service = Service()
-        let presenter = SecondRatingViewPresenter(view: secondRatingVC, service: service)
+        let presenter = SecondRatingViewPresenter(view: secondRatingVC, service: service, review: review)
         secondRatingVC.presenter = presenter
         view?.present(secondRatingVC, animated: true, completion: nil)
     }

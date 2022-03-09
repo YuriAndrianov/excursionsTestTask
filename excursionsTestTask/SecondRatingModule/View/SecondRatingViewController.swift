@@ -123,7 +123,10 @@ final class SecondRatingViewController: SecondRatingView {
     }
     
     @objc private func saveReviewButtonTapped() {
+        let impressionText = impressionDetailView.textView.text ?? ""
+        let improvementText = improvementSuggestionView.textView.text ?? ""
         
+        presenter?.addDetailedInformationToReview(text1: impressionText, text2: improvementText)
     }
     
     @objc private func dismissButtonTapped() {

@@ -16,7 +16,9 @@ class StyleSheet {
 
     let emojies: [String] = ["😡", "☹️", "😐", "🙂", "😃"]
     let imageURLString = "https://app.wegotrip.com/media/users/1/path32.png"
-    let postReviewURLString = "https://webhook.site/c8f2041c-c57e-433f-853f-1ef739702903"
+    
+    //"https://webhook.site/c8f2041c-c57e-433f-853f-1ef739702903" - указанная Вами в задании страница не найдена, поэтому для теста заведен другой адрес:
+    let postReviewURLString = "https://jsonplaceholder.typicode.com/posts"
     
     func createCustomRatingView(with question: String) -> CustomRatingView {
         let view = CustomRatingView()
